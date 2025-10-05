@@ -1,6 +1,6 @@
 
 // エンドポイント
-const ws = new WebSocket("ws://localhost:8080/Extenders/Game2");
+const ws = new WebSocket("wss://" + window.location.host + "/Extenders/Extenders/chat");
 
 function $(id) {
   return document.getElementById(id);
