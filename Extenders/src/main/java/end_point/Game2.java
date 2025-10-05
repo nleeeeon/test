@@ -76,6 +76,7 @@ broadcastCount();
                 		sendText(findById(sid.getId()), "bad");  // ターゲットへ原文転送
                 	}
                 }
+                ALL.clear();
                 return;
             }
             

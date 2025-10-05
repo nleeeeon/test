@@ -1,6 +1,6 @@
 
 // エンドポイント
-const ws = new WebSocket("wss://" + window.location.host + "/Extenders/Extenders/chat");
+const ws = new WebSocket("wss://" + window.location.host + "/Extenders/chat");
 
 function $(id) {
   return document.getElementById(id);
