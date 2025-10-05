@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>連想ワードゲーム</title>
+	<style>
+  body { font-family: system-ui, sans-serif; margin: 24px; }   /* 見た目調整 */
+  .box { border: 1px solid #ccc; padding: 16px; margin-top: 12px; } /* 枠 */
+  .hide { display: none; }                    /* 非表示用クラス */
+</style>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-2.1.4.min.js"></script>
+	
+</head>
+
+<body>
+	<div class="game-container">
+		<header class="game-header">
+			<h1>🧠 連想ワードゲーム</h1>
+			<p>表示されたお題から連想されるワードを入力してね！</p>
+
+			<section class="result-section" i	d="result-area">
+				<p id="result-text" class="result-message">　</p>
+			</section>
+		</header>
+
+		<main class="game-main">
+			<section class="prompt-section">
+				<h2>今日のお題</h2>
+				<input type="text" id="prompt-box" class="text-box prompt-box" value="" readonly>
+			</section>
+
+			<section class="input-section">
+				<h2>あなたの連想ワード</h2>
+				<input type="text" id="response-box" class="text-box response-box" placeholder="例: ロケット、星、無重力..."
+					maxlength="20">
+			</section>
+		</main>
+
+		<footer class="game-footer">
+			<button id="submit-button" class="submit-button">
+				🚀 ワードを送信！
+			</button>
+		</footer>
+	</div>
+
+
+	<div id="pairView" class="box hide">          <!-- PAIR用ビュー（初期は非表示） -->
+  <h2>PAIRビュー（同じ画面を共有する2人用）</h2>
+  <p>この入力はPAIR側だけで共有表示されます。</p>
+  <input id="pairInput" placeholder="PAIRへブロードキャスト"> <!-- 入力欄 -->
+  <button id="pairSend">PAIRに送信</button>   <!-- 送信ボタン -->
+  <pre id="pairLog"></pre>                    <!-- 受信ログ表示 -->
+</div>
+
+<div id="soloView" class="box hide">          <!-- SOLO用ビュー（初期は非表示） -->
+  <h2>SOLOビュー（別画面の1人用）</h2>
+  <p>この入力はSOLO側だけで共有表示されます。</p>
+  <input id="soloInput" placeholder="SOLOへブロードキャスト">
+  <button id="soloSend">SOLOに送信</button>
+  <pre id="soloLog"></pre>
+</div>
+
+
+
+
+<div id = "shareView" class="box hide">
+  <pre id="shareLog"></pre>
+
+</div>
+
+
+<div id="clear" class="box hide">          <!-- SOLO用ビュー（初期は非表示） -->
+  おめでとう
+</div>
+
+<div id="bad" class="box hide">          <!-- SOLO用ビュー（初期は非表示） -->
+  残念です
+</div>
+<script src="js/index.js"></script>
+</body>
+
+</html>

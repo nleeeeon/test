@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+/* --- 全体設定 --- */
+body {
+	margin: 0;
+	font-family: 'Press Start 2P', cursive;
+	background-color: #000;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden;
+	text-align: center;
+}
+
+/* --- 背景エフェクト --- */
+.background-animation {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	background: url('data:image/svg+xml;utf8,<svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w.w3.org/2000/svg"><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+	animation: background-scroll 60s linear infinite;
+}
+
+.scanline {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%);
+	background-size: 100% 4px;
+	animation: scanline 8s linear infinite;
+	z-index: 1;
+	pointer-events: none;
+	/* クリックを邪魔しないように */
+}
+
+/* --- コンテンツ --- */
+.title-container {
+	position: relative;
+	z-index: 2;
+	animation: fadeIn 2s ease-out;
+}
+
+.game-title {
+	font-size: 4em;
+	color: #ffd700;
+	text-shadow: 0 0 10px #ffd700, 0 0 20px #ffae00;
+	margin: 0;
+	animation: flicker 3s infinite alternate;
+}
+
+.subtitle {
+	font-size: 1em;
+	color: #00ffff;
+	margin-top: 20px;
+	text-shadow: 0 0 5px #00ffff;
+	opacity: 0;
+	animation: fadeIn 2s ease-out 1s forwards;
+}
+
+.start-button {
+	font-family: 'Press Start 2P', cursive;
+	font-size: 1.5em;
+	color: #fff;
+	background-color: #1a1a1a;
+	border: 2px solid #fff;
+	padding: 15px 30px;
+	margin-top: 50px;
+	cursor: pointer;
+	box-shadow: 0 0 15px #fff;
+	transition: all 0.2s ease;
+	opacity: 0;
+	animation: fadeIn 2s ease-out 1.5s forwards, pulse 2s infinite ease-in-out;
+}
+
+.start-button:hover {
+	background-color: #fff;
+	color: #000;
+	box-shadow: 0 0 25px #fff, 0 0 10px #ffd700;
+}
+
+/* --- アニメーション定義 --- */
+@keyframes background-scroll {
+	from {
+		background-position: 0 0;
+	}
+
+	to {
+		background-position: 0 200px;
+	}
+}
+
+@keyframes scanline {
+	from {
+		top: -10px;
+	}
+
+	to {
+		top: 0px;
+	}
+}
+
+@keyframes flicker {
+
+	0%,
+	100% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.8;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes pulse {
+
+	0%,
+	100% {
+		transform: scale(1);
+		box-shadow: 0 0 15px #fff;
+	}
+
+	50% {
+		transform: scale(1.05);
+		box-shadow: 0 0 25px #fff;
+	}
+}
+
+/* --- レスポンシブ対応 --- */
+@media (max-width: 768px) {
+	.game-title {
+		font-size: 2.5em;
+	}
+
+	.subtitle {
+		font-size: 0.8em;
+	}
+
+	.start-button {
+		font-size: 1.2em;
+		padding: 12px 25px;
+	}
+}

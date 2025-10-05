@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>連想ワードゲーム</title>
+	<style>
+  body { font-family: system-ui, sans-serif; margin: 24px; }   /* 見た目調整 */
+  .box { border: 1px solid #ccc; padding: 16px; margin-top: 12px; } /* 枠 */
+  .hide { display: none; }                    /* 非表示用クラス */
+</style>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-2.1.4.min.js"></script>
+	
+</head>
+
+<body>
+	
+<!-- ▼どこか見やすい位置に追加 -->
+<div id = "startView" class = "box">
+<div id="status" class="box">接続中: 0人</div>
+
+</div>
+
+<div id = "startWoView" class = "box hide">
+<button id="wo">ヒントから推理するクイズスタート</button>
+</div>
+
+<div id = "create" class = "box hide">
+	生成中
+</div>
+
+<div id = "answer" class = "box hide">
+	
+</div>
+
+	<div id="pairView" class="box hide">          <!-- PAIR用ビュー（初期は非表示） -->
+  <h2>あなたはヒントを送る人です</h2>
+  <div id="pairWord" style="margin:8px 0; font-weight:bold;">お題: （非公開）</div>
+  <p>ヒントを送ります。</p>
+  <input id="pairInput" placeholder="ヒント"> <!-- 入力欄 -->
+  <button id="pairSend">ヒントを送る</button>   <!-- 送信ボタン -->
+</div>
+
+<div id="soloView" class="box hide">          <!-- SOLO用ビュー（初期は非表示） -->
+  <h2>あなたは回答者です</h2>
+  <input id="soloInput" placeholder="SOLOへブロードキャスト">
+  <button id="soloSend">SOLOに送信</button>
+  <br>
+</div>
+
+
+
+
+<div id = "shareView" class="box hide">
+	ヒント<br>
+  <pre id="shareLog"></pre>
+</div>
+
+<div id="clear" class="box hide">          <!-- SOLO用ビュー（初期は非表示） -->
+  おめでとう
+  <button onclick="location.href='title.html'">タイトルへ</button>
+
+</div>
+
+<div id="bad" class="box hide">          <!-- SOLO用ビュー（初期は非表示） -->
+  残念です
+  <button onclick="location.href='title.html'">タイトルへ</button>
+</div>
+<script src="js/Game2.js"></script>
+<script>
+function $(id) {
+  return document.getElementById(id);
+}
+</script>
+
+<script>
+	$("delete").onclick = () => {                              // SOLO送信ボタン
+    $("pairView").classList.remove("hide");
+          $("soloView").classList.add("hide");
+    
+  };
+  $("delete2").onclick = () => {                              // SOLO送信ボタン
+    $("pairView").classList.add("hide");
+    $("shareView").classList.remove("hide");
+    
+  };
+  $("delete3").onclick = () => {                              // SOLO送信ボタン
+    $("shareLog").textContent += "aaaaaa" + "\n";
+    
+  };
+</script>
+
+
+</body>
+
+</html>

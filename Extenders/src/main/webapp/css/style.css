@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+/* --- ベースとフォント設定 --- */
+body {
+	font-family: 'Arial', sans-serif;
+	/* ポップなグラデーション背景 */
+	background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	margin: 0;
+	color: #333;
+}
+
+.game-container {
+	background-color: #ffffff;
+	padding: 30px;
+	border-radius: 25px;
+	/* 浮き上がるような影 */
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+	max-width: 450px;
+	width: 90%;
+	text-align: center;
+	/* 外枠もポップに */
+	border: 5px solid #ff7e5f;
+}
+
+/* --- ヘッダー --- */
+.game-header h1 {
+	color: #ff7e5f;
+	margin-bottom: 5px;
+	/* 結果表示欄との間隔を調整 */
+	font-size: 2.2em;
+}
+
+.game-header p {
+	color: #555;
+	margin-bottom: 20px;
+	/* 結果表示欄との間隔を調整 */
+}
+
+/* ---------------------------------------------------- */
+/* --- 新しく追加した結果表示セクション (タイトルの下) --- */
+/* ---------------------------------------------------- */
+
+.result-section {
+	margin: 15px 0;
+	/* タイトルと説明文の間に挟まるように調整 */
+	padding: 10px;
+	border-radius: 10px;
+	/* 薄いピンクでポップに */
+	background-color: #fce4ec;
+	/* ダッシュ線で強調 */
+	border: 3px dashed #e91e63;
+	transition: all 0.5s ease;
+	/* タイトル直下に置くため、少しコンパクトに */
+}
+
+.result-section.hidden {
+	/* 初期状態や待機状態では非表示にするためのクラス */
+	display: none;
+	opacity: 0;
+}
+
+.result-message {
+	font-size: 1.1em;
+	/* 少し小さめに */
+	font-weight: bold;
+	color: #333;
+	margin: 0;
+	/* pタグのデフォルトマージンをリセット */
+}
+
+/* --- 結果表示のテーマカラー (JavaScriptで切り替える想定) --- */
+
+/* 🚀 全員一致の場合 */
+.result-section.match {
+	/* 薄い緑 */
+	background-color: #e8f5e9;
+	/* 緑の強調線 */
+	border-color: #4caf50;
+}
+
+.result-section.match .result-message {
+	/* 濃い緑 */
+	color: #2e7d32;
+}
+
+/* ❌ 不一致の場合 */
+.result-section.mismatch {
+	/* 薄い赤 */
+	background-color: #ffebee;
+	/* 赤の強調線 */
+	border-color: #f44336;
+}
+
+.result-section.mismatch .result-message {
+	/* 濃い赤 */
+	color: #d32f2f;
+}
+
+
+/* --- セクションタイトル --- */
+.game-main h2 {
+	color: #6a00ff;
+	/* 鮮やかな紫 */
+	margin-top: 20px;
+	margin-bottom: 15px;
+	font-size: 1.2em;
+	border-bottom: 2px dashed #dcdcdc;
+	padding-bottom: 5px;
+}
+
+/* --- テキストボックス共通スタイル --- */
+.text-box {
+	width: calc(100% - 20px);
+	padding: 15px 10px;
+	margin-bottom: 25px;
+	border: 3px solid #6a00ff;
+	border-radius: 12px;
+	font-size: 1.1em;
+	box-sizing: border-box;
+	transition: all 0.3s ease;
+}
+
+/* --- お題ボックス (リードオンリー) --- */
+.prompt-box {
+	/* 明るい水色 */
+	background-color: #e0f7fa;
+	color: #00796b;
+	font-weight: bold;
+	text-align: center;
+	/* 下の影で立体感を */
+	box-shadow: 0 4px #00bcd4;
+}
+
+/* --- 入力ボックス --- */
+.response-box {
+	/* 明るい黄色 */
+	background-color: #fff9c4;
+}
+
+.response-box:focus {
+	/* フォーカス時にオレンジに */
+	border-color: #ff5722;
+	box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+	outline: none;
+}
+
+/* --- 送信ボタン --- */
+.submit-button {
+	/* 鮮やかなオレンジ */
+	background-color: #ff5722;
+	color: white;
+	border: none;
+	padding: 15px 30px;
+	/* 丸いボタン */
+	border-radius: 50px;
+	font-size: 1.2em;
+	font-weight: bold;
+	cursor: pointer;
+	/* 押し込みやすい影 */
+	box-shadow: 0 6px #e64a19;
+	transition: all 0.1s;
+	width: 100%;
+	max-width: 300px;
+	margin-top: 20px;
+}
+
+.submit-button:hover {
+	background-color: #e64a19;
+}
+
+.submit-button:active {
+	/* ボタンが押された時のアニメーション */
+	box-shadow: 0 2px #e64a19;
+	transform: translateY(4px);
+}

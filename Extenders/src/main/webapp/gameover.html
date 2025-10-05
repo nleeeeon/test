@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ゲームオーバー</title>
+	<link rel="stylesheet" href="css/gameover.css">
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="title" data-text="GAME OVER">GAME OVER</h1>
+		<p class="subtitle">残念...また挑戦しよう！</p>
+		<p class="score">最終スコア: <span id="final-score">00000</span>点</p>
+
+		<div class="button-group">
+			<button class="retry-button" onclick="location.href='title.html'">
+				<i class="fas fa-redo-alt"></i> もう一度プレイ
+			</button>
+			<button class="title-button" onclick="location.href='title.html'">
+				<i class="fas fa-home"></i> タイトルへ戻る
+			</button>
+		</div>
+	</div>
+
+	<script src="js/gameover.js"></script>
+</body>
+
+</html>

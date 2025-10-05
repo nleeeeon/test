@@ -1,0 +1,444 @@
+@charset "UTF-8";
+/* Google Fonts - Press Start 2P */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* 全体設定 */
+body {
+	margin: 0;
+	font-family: 'Press Start 2P', cursive;
+	background: linear-gradient(135deg, #1f002b 0%, #000000 100%);
+	/* グラデーション背景 */
+	color: #e0e0e0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	overflow: hidden;
+	/* スクロールバー非表示 */
+	position: relative;
+	/* 背景アニメーションの基準点 */
+}
+
+/* 背景アニメーション (パーティクル風) */
+.background-animation {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	background: url('data:image/svg+xml;utf8,<svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="2" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+	animation: background-scroll 60s linear infinite;
+}
+
+@keyframes background-scroll {
+	from {
+		background-position: 0 0;
+	}
+
+	to {
+		background-position: 100vw 100vh;
+	}
+}
+
+/* コンテナ */
+.container {
+	text-align: center;
+	background: linear-gradient(145deg, #4b0082, #2a0050);
+	/* コンテナのグラデーション */
+	padding: 40px 60px;
+	border-radius: 25px;
+	box-shadow: 0 0 40px rgba(181, 68, 254, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.3);
+	/* より強調された影と内側の輝き */
+	border: 3px solid #d400ff;
+	/* 鮮やかな枠線 */
+	animation: fadeInScale 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+	/* バウンドするようなアニメーション */
+	position: relative;
+	z-index: 1;
+	/* 手前に表示 */
+	backdrop-filter: blur(5px);
+	/* 背景のぼかし効果 */
+}
+
+/* クリアメッセージ全体 */
+.clear-message {
+	padding: 20px;
+	position: relative;
+}
+
+/* タイトルアニメーション */
+.title {
+	font-size: 4em;
+	color: #ffeb3b;
+	text-shadow: 0 0 10px #ffee58, 0 0 25px #ffee58, 0 0 40px #ffc107;
+	margin-bottom: 15px;
+	letter-spacing: 5px;
+	white-space: nowrap;
+	/* タイトルが折り返さないように */
+	overflow: hidden;
+	/* 各文字のオーバーフローを隠す */
+	display: inline-block;
+	/* span要素が正しく配置されるように */
+}
+
+.title span {
+	display: inline-block;
+	/* 各文字を個別にアニメーション */
+	opacity: 0;
+	transform: translateY(-50px) rotate(15deg);
+	animation: bounceIn 0.8s forwards;
+}
+
+/* 各文字にアニメーション遅延を適用 */
+.title span:nth-child(1) {
+	animation-delay: 0.2s;
+}
+
+.title span:nth-child(2) {
+	animation-delay: 0.3s;
+}
+
+.title span:nth-child(3) {
+	animation-delay: 0.4s;
+}
+
+.title span:nth-child(4) {
+	animation-delay: 0.5s;
+}
+
+.title span:nth-child(5) {
+	animation-delay: 0.6s;
+}
+
+/* スペース後のC */
+.title span:nth-child(6) {
+	animation-delay: 0.7s;
+}
+
+.title span:nth-child(7) {
+	animation-delay: 0.8s;
+}
+
+.title span:nth-child(8) {
+	animation-delay: 0.9s;
+}
+
+.title span:nth-child(9) {
+	animation-delay: 1.0s;
+}
+
+.title span:nth-child(10) {
+	animation-delay: 1.1s;
+}
+
+
+.subtitle {
+	font-size: 1.4em;
+	color: #a7ffeb;
+	margin-top: 5px;
+	margin-bottom: 35px;
+	animation: fadeInSlideUp 1.2s ease-out forwards;
+	animation-delay: 1.5s;
+	/* タイトル後に表示 */
+	opacity: 0;
+	transform: translateY(20px);
+}
+
+/* 星のアニメーション */
+.star {
+	font-size: 3em;
+	/* デフォルトの星のサイズ */
+	color: #ffd700;
+	margin: 0 10px 25px 10px;
+	display: inline-block;
+	animation: sparkle 1.5s infinite alternate, star-float 3s ease-in-out infinite alternate;
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	transform: translateX(-50%);
+	pointer-events: none;
+	/* クリック不可に */
+}
+
+/* 個別の星の位置とサイズ、アニメーション遅延 */
+.star.large {
+	font-size: 4em;
+	top: 10%;
+	left: 20%;
+	animation-delay: 0s, 0.3s;
+}
+
+.star.medium {
+	font-size: 3em;
+	top: 20%;
+	left: 80%;
+	animation-delay: 0.5s, 0.8s;
+}
+
+.star.small {
+	font-size: 2em;
+	top: 70%;
+	left: 10%;
+	animation-delay: 1s, 1.3s;
+}
+
+
+/* ボタン */
+.button-group {
+	margin-top: 20px;
+	animation: fadeInSlideUp 1.2s ease-out forwards;
+	animation-delay: 2.2s;
+	/* サブタイトル後に表示 */
+	opacity: 0;
+	transform: translateY(20px);
+}
+
+.retry-button {
+	background: linear-gradient(135deg, #4CAF50, #388E3C);
+	/* グラデーションボタン */
+	color: white;
+	padding: 18px 35px;
+	font-size: 1.2em;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin: 10px;
+	transition: all 0.3s ease;
+	box-shadow: 0 8px #2E7D32, inset 0 2px 5px rgba(255, 255, 255, 0.3);
+	/* 3D効果 */
+	font-family: 'Press Start 2P', cursive;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+	letter-spacing: 1px;
+}
+
+.retry-button:hover {
+	transform: translateY(-5px) scale(1.05);
+	/* ホバーで大きく浮き上がる */
+	box-shadow: 0 12px #2E7D32, inset 0 2px 5px rgba(255, 255, 255, 0.3);
+	filter: brightness(1.1);
+	/* 明るくする */
+}
+
+.retry-button:active {
+	transform: translateY(2px);
+	/* クリックで沈み込む */
+	box-shadow: 0 3px #2E7D32, inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* アイコンのスタイル */
+.retry-button i {
+	margin-right: 8px;
+}
+
+/* 紙吹雪アニメーション */
+.confetti-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	pointer-events: none;
+	/* クリック不可に */
+	z-index: 0;
+	/* コンテナの背景より手前 */
+}
+
+.confetti {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: transparent;
+	/* JavaScriptで色設定 */
+	border-radius: 50%;
+	animation: fall 5s linear forwards;
+	opacity: 0;
+}
+
+@keyframes fall {
+	0% {
+		transform: translateY(-100px) rotate(0deg);
+		opacity: 0;
+	}
+
+	10% {
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateY(100vh) rotate(720deg);
+		opacity: 0.7;
+	}
+}
+
+
+/* アニメーションキーフレーム */
+@keyframes fadeInScale {
+	from {
+		opacity: 0;
+		transform: scale(0.7) translateY(-50px);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+
+@keyframes bounceIn {
+	0% {
+		opacity: 0;
+		transform: translateY(-100px) rotate(30deg);
+	}
+
+	60% {
+		opacity: 1;
+		transform: translateY(10px) rotate(-5deg);
+	}
+
+	80% {
+		transform: translateY(-5px) rotate(2deg);
+	}
+
+	100% {
+		transform: translateY(0) rotate(0deg);
+		opacity: 1;
+	}
+}
+
+@keyframes fadeInSlideUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes sparkle {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	50% {
+		transform: scale(1.1);
+		opacity: 0.8;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes star-float {
+	0% {
+		transform: translateY(0px) translateX(-50%);
+	}
+
+	50% {
+		transform: translateY(-15px) translateX(-50%);
+	}
+
+	100% {
+		transform: translateY(0px) translateX(-50%);
+	}
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+	.container {
+		padding: 30px 40px;
+		margin: 15px;
+	}
+
+	.title {
+		font-size: 3em;
+		letter-spacing: 3px;
+	}
+
+	.subtitle {
+		font-size: 1.1em;
+	}
+
+	.retry-button {
+		padding: 15px 25px;
+		font-size: 1em;
+		display: block;
+		width: calc(100% - 20px);
+		max-width: 300px;
+		margin: 10px auto;
+	}
+
+	.star {
+		font-size: 2.5em;
+		margin: 0 5px 15px 5px;
+	}
+
+	.star.large {
+		font-size: 3.5em;
+		top: 5%;
+		left: 10%;
+	}
+
+	.star.medium {
+		font-size: 2.5em;
+		top: 15%;
+		left: 90%;
+	}
+
+	.star.small {
+		font-size: 1.5em;
+		top: 60%;
+		left: 20%;
+	}
+}
+
+@media (max-width: 480px) {
+	.container {
+		padding: 20px 25px;
+		border-radius: 15px;
+	}
+
+	.title {
+		font-size: 2.2em;
+		letter-spacing: 2px;
+	}
+
+	.subtitle {
+		font-size: 0.9em;
+	}
+
+	.retry-button {
+		padding: 12px 20px;
+		font-size: 0.9em;
+		margin: 8px auto;
+	}
+
+	.star {
+		font-size: 2em;
+	}
+
+	.star.large {
+		font-size: 3em;
+		top: 3%;
+		left: 5%;
+	}
+
+	.star.medium {
+		font-size: 2em;
+		top: 10%;
+		left: 95%;
+	}
+
+	.star.small {
+		font-size: 1em;
+		top: 70%;
+		left: 30%;
+	}
+}
